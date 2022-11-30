@@ -1,0 +1,269 @@
+Started by user elmer mamani
+Running as SYSTEM
+Building remotely on debian (esclavo) in workspace /home/elmerivan7/jenkins/workspace/LEVANTAR SERVICIO FRONTEN Y BACKEND
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/elmerivan7/laboratorio4.git
+ > git init /home/elmerivan7/jenkins/workspace/LEVANTAR SERVICIO FRONTEN Y BACKEND # timeout=10
+Fetching upstream changes from https://github.com/elmerivan7/laboratorio4.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.30.2'
+ > git fetch --tags --force --progress -- https://github.com/elmerivan7/laboratorio4.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/elmerivan7/laboratorio4.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision 59797da99869ec6df00dd8227487d088d7ccb5f9 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 59797da99869ec6df00dd8227487d088d7ccb5f9 # timeout=10
+Commit message: "proyecto dockerfile docker-compose."
+First time build. Skipping changelog.
+[LEVANTAR SERVICIO FRONTEN Y BACKEND] $ /bin/sh -xe /tmp/jenkins15301263087992347538.sh
++ docker-compose up -d
+Creating network "levantarserviciofrontenybackend_default" with the default driver
+Creating volume "levantarserviciofrontenybackend_apiDB" with default driver
+Pulling mongo (mongo:)...
+latest: Pulling from library/mongo
+Digest: sha256:8bed0be3e86595283d67836e8d4f3f08916184ea6f2aac7440bda496083ab0c8
+Status: Downloaded newer image for mongo:latest
+Building api
+Step 1/7 : FROM node
+latest: Pulling from library/node
+Digest: sha256:a0976cffecd3fad1697615eb14542e25deb2234f3beb4448417bfe88585ca4f8
+Status: Downloaded newer image for node:latest
+ ---> 5f352850ed59
+Step 2/7 : WORKDIR /app
+ ---> Running in a859187d6ad8
+Removing intermediate container a859187d6ad8
+ ---> 500f7d525bc0
+Step 3/7 : COPY package*.json /app/
+ ---> 4d7baae641df
+Step 4/7 : RUN npm install
+ ---> Running in c0b708686436
+[91mnpm[0m[91m WARN old lockfile 
+[0m[91mnpm [0m[91mWARN[0m[91m old lockfile The package-lock.json file was created with an old version of npm,
+npm WARN old lockfile so supplemental metadata must be fetched from the registry.
+npm WARN old lockfile 
+npm WARN old lockfile This is a one-time fix-up, please be patient...
+npm WARN old lockfile 
+[0m[91mnpm WARN deprecated[0m[91m ini@1.3.5: Please update to ini >=1.3.6 to avoid a prototype pollution issue
+[0m[91mnpm WARN deprecated debug@3.2.6: Debug versions >=3.2.0 <3.2.7 || >=4 <4.3.1 have a low-severity ReDos regression when used in a Node.js environment. It is recommended you upgrade to 3.2.7 or 4.3.1. (https://github.com/visionmedia/debug/issues/797)
+[0m
+added 183 packages, and audited 184 packages in 27s
+
+1 package is looking for funding
+  run `npm fund` for details
+
+16 vulnerabilities (8 moderate, 5 high, 3 critical)
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+[91mnpm notice 
+npm notice[0m[91m New major version of npm available! 8.19.3 -> 9.1.2
+npm notice Changelog: <https://github.com/npm/cli/releases/tag/v9.1.2>
+npm notice Run `npm install -g npm@9.1.2` to update!
+npm notice 
+[0mRemoving intermediate container c0b708686436
+ ---> 9e10d91bb8da
+Step 5/7 : COPY . /app/
+ ---> f679c55458a4
+Step 6/7 : EXPOSE 8081
+ ---> Running in 0163e5746f1d
+Removing intermediate container 0163e5746f1d
+ ---> 819efb197c9f
+Step 7/7 : CMD [ "npm", "start"]
+ ---> Running in 08297c90d82e
+Removing intermediate container 08297c90d82e
+ ---> 889a441a9d61
+
+Successfully built 889a441a9d61
+Successfully tagged levantarserviciofrontenybackend_api:latest
+Image for service api was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Building client
+Step 1/9 : FROM node
+ ---> 5f352850ed59
+Step 2/9 : RUN npm install -g http-server
+ ---> Running in 81b6198d1774
+
+added 39 packages, and audited 40 packages in 4s
+
+10 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+[91mnpm[0m[91m notice 
+npm [0m[91mnotice[0m[91m New major version of npm available! 8.19.3 -> 9.1.2
+npm notice Changelog: <https://github.com/npm/cli/releases/tag/v9.1.2>
+npm notice Run `npm install -g npm@9.1.2` to update!
+npm notice 
+[0mRemoving intermediate container 81b6198d1774
+ ---> 7b5997250320
+Step 3/9 : WORKDIR /client
+ ---> Running in 5abb29513745
+Removing intermediate container 5abb29513745
+ ---> d50978c3b213
+Step 4/9 : COPY package*.json /client/
+ ---> 41d31f55b698
+Step 5/9 : RUN npm install
+ ---> Running in b068a7f3cdcd
+[91mnpm[0m[91m WARN old lockfile 
+npm WARN old lockfile The package-lock.json file was created with an old version of npm,
+[0m[91mnpm WARN old lockfile so supplemental metadata must be fetched from the registry.
+npm WARN old lockfile[0m[91m 
+npm WARN old lockfile This is a one-time fix-up, please be patient...
+npm [0m[91mWARN[0m[91m old lockfile 
+[0m[91mnpm[0m[91m WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'karma@1.7.1',
+npm WARN EBADENGINE   required: { node: '0.10 || 0.12 || 4 || 5 || 6 || 7 || 8' },
+npm WARN EBADENGINE   current: { node: 'v19.2.0', npm: '8.19.3' }
+npm WARN EBADENGINE }
+[0m[91mnpm[0m[91m WARN deprecated urix@0.1.0: Please see https://github.com/lydell/urix#deprecated
+[0m[91mnpm WARN deprecated uuid@3.3.3: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+[0m[91mnpm WARN deprecated stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
+[0m[91mnpm WARN deprecated source-map-url@0.4.0: See https://github.com/lydell/source-map-url#deprecated
+[0m[91mnpm WARN deprecated socks@1.1.10: If using 2.x branch, please upgrade to at least 2.1.6 to avoid a serious bug with socket data flow and an import issue introduced in 2.1.0
+[0m[91mnpm WARN deprecated source-map-resolve@0.5.2: See https://github.com/lydell/source-map-resolve#deprecated
+[0m[91mnpm WARN deprecated svgo@0.7.2: This SVGO version is no longer supported. Upgrade to v2.x.x.
+[0m[91mnpm WARN deprecated samsam@1.3.0: This package has been deprecated in favour of @sinonjs/samsam
+[0m[91mnpm WARN deprecated[0m[91m resolve-url@0.2.1: https://github.com/lydell/resolve-url#deprecated
+[0m[91mnpm WARN deprecated request@2.88.0: request has been deprecated, see https://github.com/request/request/issues/3142
+[0m[91mnpm[0m[91m WARN deprecated querystring@0.2.0: The querystring API is considered Legacy. new code should use the URLSearchParams API instead.
+[0m[91mnpm WARN deprecated phantomjs-prebuilt@2.1.16: this package is now deprecated
+[0m[91mnpm WARN deprecated mkdirp@0.5.1: Legacy versions of mkdirp are no longer supported. Please update to mkdirp 1.x. (Note that the API surface has changed to use Promises in 1.x.)
+[0m[91mnpm WARN[0m[91m [0m[91mdeprecated log4js@0.6.38: 0.x is no longer supported. Please upgrade to 6.x or higher.
+[0m[91mnpm WARN deprecated json3@3.3.2: Please use the native JSON object instead of JSON 3
+[0m[91mnpm WARN deprecated istanbul@0.4.5: This module is no longer maintained, try this instead:
+npm WARN deprecated   npm i nyc
+npm WARN deprecated Visit https://istanbul.js.org/integrations for other alternatives.
+[0m[91mnpm WARN deprecated html-webpack-plugin@2.30.1: out of support
+[0m[91mnpm[0m[91m WARN[0m[91m [0m[91mdeprecated[0m[91m har-validator@5.1.3: this library is no longer supported
+[0m[91mnpm WARN deprecated flatten@1.0.3: flatten is deprecated in favor of utility frameworks such as lodash.
+[0m[91mnpm WARN deprecated extract-text-webpack-plugin@3.0.2: Deprecated. Please use https://github.com/webpack-contrib/mini-css-extract-plugin
+[0m[91mnpm[0m[91m [0m[91mWARN [0m[91mdeprecated[0m[91m eslint-loader@1.9.0: This loader has been deprecated. Please use eslint-webpack-plugin
+[0m[91mnpm[0m[91m [0m[91mWARN[0m[91m [0m[91mdeprecated[0m[91m circular-json@0.3.3: CircularJSON is in maintenance only, flatted is its successor.
+[0m[91mnpm[0m[91m [0m[91mWARN[0m[91m [0m[91mdeprecated chokidar@1.7.0: Chokidar 2 will break on node v14+. Upgrade to chokidar 3 with 15x less dependencies.
+[0m[91mnpm WARN deprecated bfj-node4@5.3.1: Switch to the `bfj` package for fixes and new features!
+[0m[91mnpm WARN deprecated babel-eslint@8.2.6: babel-eslint is now @babel/eslint-parser. This package will no longer receive updates.
+[0m[91mnpm WARN deprecated browserslist@2.11.3: Browserslist 2 could fail on reading Browserslist >3.0 config used in other tools.
+[0m[91mnpm WARN deprecated axios@0.19.0: Critical security vulnerability fixed in v0.21.1. For more information, see https://github.com/axios/axios/pull/3410
+[0m[91mnpm WARN deprecated acorn-dynamic-import@2.0.2: This is probably built in to whatever tool you're using. If you still need it... idk
+[0m[91mnpm WARN deprecated core-js@2.6.10: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+[0m[91mnpm[0m[91m WARN deprecated debug@3.2.6: Debug versions >=3.2.0 <3.2.7 || >=4 <4.3.1 have a low-severity ReDos regression when used in a Node.js environment. It is recommended you upgrade to 3.2.7 or 4.3.1. (https://github.com/visionmedia/debug/issues/797)
+[0m[91mnpm WARN deprecated chokidar@2.1.8: Chokidar 2 does not receive security updates since 2019. Upgrade to chokidar 3 with 15x fewer dependencies
+[0m[91mnpm WARN deprecated chokidar@2.1.8: Chokidar 2 does not receive security updates since 2019. Upgrade to chokidar 3 with 15x fewer dependencies
+[0m[91mnpm [0m[91mWARN deprecated debug@3.2.6: Debug versions >=3.2.0 <3.2.7 || >=4 <4.3.1 have a low-severity ReDos regression when used in a Node.js environment. It is recommended you upgrade to 3.2.7 or 4.3.1. (https://github.com/visionmedia/debug/issues/797)
+[0m[91mnpm[0m[91m WARN deprecated debug@4.1.0: Debug versions >=3.2.0 <3.2.7 || >=4 <4.3.1 have a low-severity ReDos regression when used in a Node.js environment. It is recommended you upgrade to 3.2.7 or 4.3.1. (https://github.com/visionmedia/debug/issues/797)
+[0m[91mnpm[0m[91m WARN deprecated debug@4.1.1: Debug versions >=3.2.0 <3.2.7 || >=4 <4.3.1 have a low-severity ReDos regression when used in a Node.js environment. It is recommended you upgrade to 3.2.7 or 4.3.1. (https://github.com/visionmedia/debug/issues/797)
+[0m[91mnpm[0m[91m WARN deprecated debug@4.1.1: Debug versions >=3.2.0 <3.2.7 || >=4 <4.3.1 have a low-severity ReDos regression when used in a Node.js environment. It is recommended you upgrade to 3.2.7 or 4.3.1. (https://github.com/visionmedia/debug/issues/797)
+[0m[91mnpm[0m[91m WARN deprecated uglify-es@3.3.9: support for ECMAScript is superseded by `uglify-js` as of v3.13.0
+[0m[91mnpm[0m[91m WARN deprecated browserslist@1.7.7: Browserslist 2 could fail on reading Browserslist >3.0 config used in other tools.
+[0m[91mnpm[0m[91m WARN deprecated debug@3.2.6: Debug versions >=3.2.0 <3.2.7 || >=4 <4.3.1 have a low-severity ReDos regression when used in a Node.js environment. It is recommended you upgrade to 3.2.7 or 4.3.1. (https://github.com/visionmedia/debug/issues/797)
+[0m[91mnpm[0m[91m WARN deprecated debug@3.2.6: Debug versions >=3.2.0 <3.2.7 || >=4 <4.3.1 have a low-severity ReDos regression when used in a Node.js environment. It is recommended you upgrade to 3.2.7 or 4.3.1. (https://github.com/visionmedia/debug/issues/797)
+[0m[91mnpm[0m[91m WARN deprecated debug@3.2.6: Debug versions >=3.2.0 <3.2.7 || >=4 <4.3.1 have a low-severity ReDos regression when used in a Node.js environment. It is recommended you upgrade to 3.2.7 or 4.3.1. (https://github.com/visionmedia/debug/issues/797)
+[0m[91mnpm WARN deprecated browserslist@1.7.7: Browserslist 2 could fail on reading Browserslist >3.0 config used in other tools.
+[0m[91mnpm [0m[91mWARN deprecated svgo@1.3.2: This SVGO version is no longer supported. Upgrade to v2.x.x.
+[0m[91mnpm WARN deprecated browserslist@1.7.7: Browserslist 2 could fail on reading Browserslist >3.0 config used in other tools.
+[0m[91mnpm WARN deprecated debug@3.2.6: Debug versions >=3.2.0 <3.2.7 || >=4 <4.3.1 have a low-severity ReDos regression when used in a Node.js environment. It is recommended you upgrade to 3.2.7 or 4.3.1. (https://github.com/visionmedia/debug/issues/797)
+[0m
+added 1742 packages, and audited 1743 packages in 3m
+
+11 packages are looking for funding
+  run `npm fund` for details
+
+148 vulnerabilities (8 low, 65 moderate, 50 high, 25 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+Removing intermediate container b068a7f3cdcd
+ ---> f8c7c199377c
+Step 6/9 : COPY . /client/
+ ---> 3936fec1c0a1
+Step 7/9 : RUN npm run build
+ ---> Running in 8b1538432b5c
+
+> client@1.0.0 build
+> node build/build.js
+
+[91m(node:22) Warning: Accessing non-existent property 'cat' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+[0m[91m(node:22) Warning: Accessing non-existent property 'cd' of module exports inside circular dependency
+(node:22) Warning: Accessing non-existent property 'chmod' of module exports inside circular dependency
+(node:22) Warning: Accessing non-existent property 'cp' of module exports inside circular dependency
+(node:22) Warning: Accessing non-existent property 'dirs' of module exports inside circular dependency
+(node:22) Warning: Accessing non-existent property 'pushd' of module exports inside circular dependency
+(node:22) Warning: Accessing non-existent property 'popd' of module exports inside circular dependency
+[0m[91m(node:22) Warning: Accessing non-existent property 'echo' of module exports inside circular dependency
+(node:22) Warning: Accessing non-existent property 'tempdir' of module exports inside circular dependency
+[0m[91m(node:22) Warning: Accessing non-existent property 'pwd' of module exports inside circular dependency
+(node:22) Warning: Accessing non-existent property 'exec' of module exports inside circular dependency
+(node:22) Warning: Accessing non-existent property 'ls' of module exports inside circular dependency
+[0m[91m(node:22) Warning: Accessing non-existent property 'find' of module exports inside circular dependency
+(node:22) Warning: Accessing non-existent property 'grep' of module exports inside circular dependency
+[0m[91m(node:22) Warning: Accessing non-existent property 'head' of module exports inside circular dependency
+(node:22) Warning: Accessing non-existent property 'ln' of module exports inside circular dependency
+(node:22) Warning: Accessing non-existent property 'mkdir' of module exports inside circular dependency
+[0m[91m(node:22) Warning: Accessing non-existent property 'rm' of module exports inside circular dependency
+(node:22) Warning: Accessing non-existent property 'mv' of module exports inside circular dependency
+[0m[91m(node:22) Warning: Accessing non-existent property 'sed' of module exports inside circular dependency
+(node:22) Warning: Accessing non-existent property 'set' of module exports inside circular dependency
+(node:22) Warning: Accessing non-existent property 'sort' of module exports inside circular dependency
+[0m[91m(node:22) Warning: Accessing non-existent property 'tail' of module exports inside circular dependency
+(node:22) Warning: Accessing non-existent property 'test' of module exports inside circular dependency
+(node:22) Warning: Accessing non-existent property 'to' of module exports inside circular dependency
+(node:22) Warning: Accessing non-existent property 'toEnd' of module exports inside circular dependency
+[0m[91m(node:22) Warning: Accessing non-existent property 'touch' of module exports inside circular dependency
+(node:22) Warning: Accessing non-existent property 'uniq' of module exports inside circular dependency
+(node:22) Warning: Accessing non-existent property 'which' of module exports inside circular dependency
+[0m[91mBrowserslist: caniuse-lite is outdated. Please run next command `npm update`
+[0m[91mBrowserslist: caniuse-lite is outdated. Please run next command `npm update`
+[0mHash: [1m41b0707750c693e0d9f7[39m[22m
+Version: webpack [1m3.12.0[39m[22m
+Time: [1m4680[39m[22mms
+                                                  [1mAsset[39m[22m       [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m           [1m[39m[22m[1mChunk Names[39m[22m
+               [1m[32mstatic/js/vendor.2828cc450934dc8261f0.js[39m[22m     161 kB       [1m0[39m[22m  [1m[32m[emitted][39m[22m  vendor
+                  [1m[32mstatic/js/app.a575dcddba4d9864a51b.js[39m[22m     2.3 kB       [1m1[39m[22m  [1m[32m[emitted][39m[22m  app
+             [1m[32mstatic/js/manifest.2ae2e69a05c33dfc65f8.js[39m[22m  857 bytes       [1m2[39m[22m  [1m[32m[emitted][39m[22m  manifest
+    [1m[32mstatic/css/app.86a4513a3e04c0dcb73e6d6aea4580e4.css[39m[22m  237 bytes       [1m1[39m[22m  [1m[32m[emitted][39m[22m  app
+[1m[32mstatic/css/app.86a4513a3e04c0dcb73e6d6aea4580e4.css.map[39m[22m  452 bytes        [1m[39m[22m  [1m[32m[emitted][39m[22m  
+           [1m[32mstatic/js/vendor.2828cc450934dc8261f0.js.map[39m[22m     804 kB       [1m0[39m[22m  [1m[32m[emitted][39m[22m  vendor
+              [1m[32mstatic/js/app.a575dcddba4d9864a51b.js.map[39m[22m    13.8 kB       [1m1[39m[22m  [1m[32m[emitted][39m[22m  app
+         [1m[32mstatic/js/manifest.2ae2e69a05c33dfc65f8.js.map[39m[22m    4.97 kB       [1m2[39m[22m  [1m[32m[emitted][39m[22m  manifest
+                                             [1m[32mindex.html[39m[22m  646 bytes        [1m[39m[22m  [1m[32m[emitted][39m[22m  
+
+  Build complete.
+
+  Tip: built files are meant to be served over an HTTP server.
+  Opening index.html over file:// won't work.
+
+Removing intermediate container 8b1538432b5c
+ ---> 7ce34ee8a70f
+Step 8/9 : EXPOSE 8080
+ ---> Running in 9fa1b13d60f3
+Removing intermediate container 9fa1b13d60f3
+ ---> 1e412cb03534
+Step 9/9 : CMD [ "http-server", "dist" ]
+ ---> Running in 8344a7736bc2
+Removing intermediate container 8344a7736bc2
+ ---> 652b3e22f6b1
+
+Successfully built 652b3e22f6b1
+Successfully tagged levantarserviciofrontenybackend_client:latest
+Image for service client was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Creating mongo-backend ... 
+[1A[2K
+Creating mongo-backend ... [32mdone[0m
+[1BCreating api-container ... 
+[1A[2K
+Creating api-container ... [32mdone[0m
+[1BCreating client-container ... 
+[1A[2K
+Creating client-container ... [32mdone[0m
+[1BFinished: SUCCESS

@@ -1,0 +1,80 @@
+SSHLauncher{host='192.168.0.162', port=22, credentialsId='nn', jvmOptions='', javaPath='', prefixStartSlaveCmd='', suffixStartSlaveCmd='', launchTimeoutSeconds=60, maxNumRetries=10, retryWaitTime=15, sshHostKeyVerificationStrategy=hudson.plugins.sshslaves.verifiers.NonVerifyingKeyVerificationStrategy, tcpNoDelay=true, trackCredentials=true}
+[11/30/22 15:49:13] [SSH] Opening SSH connection to 192.168.0.162:22.
+[11/30/22 15:49:13] [SSH] WARNING: SSH Host Keys are not being verified. Man-in-the-middle attacks may be possible against this connection.
+[11/30/22 15:49:13] [SSH] Authentication successful.
+[11/30/22 15:49:14] [SSH] The remote user's environment is:
+BASH=/usr/bin/bash
+BASHOPTS=checkwinsize:cmdhist:complete_fullquote:extquote:force_fignore:globasciiranges:hostcomplete:interactive_comments:progcomp:promptvars:sourcepath
+BASH_ALIASES=()
+BASH_ARGC=([0]="0")
+BASH_ARGV=()
+BASH_CMDS=()
+BASH_EXECUTION_STRING=set
+BASH_LINENO=()
+BASH_SOURCE=()
+BASH_VERSINFO=([0]="5" [1]="1" [2]="4" [3]="1" [4]="release" [5]="x86_64-pc-linux-gnu")
+BASH_VERSION='5.1.4(1)-release'
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+DIRSTACK=()
+EUID=1000
+GROUPS=()
+HOME=/home/elmerivan7
+HOSTNAME=debian
+HOSTTYPE=x86_64
+IFS=$' \t\n'
+LANG=es_ES.UTF-8
+LOGNAME=elmerivan7
+MACHTYPE=x86_64-pc-linux-gnu
+MOTD_SHOWN=pam
+OPTERR=1
+OPTIND=1
+OSTYPE=linux-gnu
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/games
+PIPESTATUS=([0]="0")
+PPID=5942
+PS4='+ '
+PWD=/home/elmerivan7
+SHELL=/bin/bash
+SHELLOPTS=braceexpand:hashall:interactive-comments
+SHLVL=1
+SSH_CLIENT='192.168.0.185 52314 22'
+SSH_CONNECTION='192.168.0.185 52314 192.168.0.162 22'
+TERM=dumb
+UID=1000
+USER=elmerivan7
+XDG_RUNTIME_DIR=/run/user/1000
+XDG_SESSION_CLASS=user
+XDG_SESSION_ID=39
+XDG_SESSION_TYPE=tty
+_=']'
+Checking Java version in the PATH
+openjdk version "11.0.16" 2022-07-19
+OpenJDK Runtime Environment (build 11.0.16+8-post-Debian-1deb11u1)
+OpenJDK 64-Bit Server VM (build 11.0.16+8-post-Debian-1deb11u1, mixed mode, sharing)
+[11/30/22 15:49:14] [SSH] Checking java version of /home/elmerivan7/jenkins/jdk/bin/java
+Couldn't figure out the Java version of /home/elmerivan7/jenkins/jdk/bin/java
+bash: línea 1: /home/elmerivan7/jenkins/jdk/bin/java: No existe el fichero o el directorio
+
+[11/30/22 15:49:14] [SSH] Checking java version of java
+[11/30/22 15:49:14] [SSH] java -version returned 11.0.16.
+[11/30/22 15:49:14] [SSH] Starting sftp client.
+[11/30/22 15:49:14] [SSH] Copying latest remoting.jar...
+[11/30/22 15:49:14] [SSH] Copied 1,368,830 bytes.
+Expanded the channel window size to 4MB
+[11/30/22 15:49:14] [SSH] Starting agent process: cd "/home/elmerivan7/jenkins" && java  -jar remoting.jar -workDir /home/elmerivan7/jenkins -jar-cache /home/elmerivan7/jenkins/remoting/jarCache
+nov. 30, 2022 4:49:14 P. M. org.jenkinsci.remoting.engine.WorkDirManager initializeWorkDir
+INFORMACIÓN: Using /home/elmerivan7/jenkins/remoting as a remoting work directory
+nov. 30, 2022 4:49:14 P. M. org.jenkinsci.remoting.engine.WorkDirManager setupLogging
+INFORMACIÓN: Both error and output logs will be printed to /home/elmerivan7/jenkins/remoting
+<===[JENKINS REMOTING CAPACITY]===>channel started
+Remoting version: 3077.vd69cf116da_6f
+Launcher: SSHLauncher
+Communication Protocol: Standard in/out
+This is a Unix agent
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by jenkins.slaves.StandardOutputSwapper$ChannelSwapper to constructor java.io.FileDescriptor(int)
+WARNING: Please consider reporting this to the maintainers of jenkins.slaves.StandardOutputSwapper$ChannelSwapper
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Evacuated stdout
+Agent successfully connected and online
